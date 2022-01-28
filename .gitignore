@@ -1,0 +1,10 @@
+.clj-kondo/
+.cpcache/
+.log/
+.lsp/
+.shadow-cljs/
+out/
+node_modules/
+compiled/
+#*#
+*~
