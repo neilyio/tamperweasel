@@ -8,7 +8,7 @@ To use:
 
 1. Install Weasel and ClojureScript to your Clojure environment. This might be the ~deps.edn~ in your project folder, or ~.clojure/deps.edn~ for a "global" install.
    
-2. You need a server that's going to A. host your ClojureScript REPL, B. host the WebSocket connection with your browser. You can run both in the same Clojure process with the code below. I usually put the code below in a ~build.clj~, and run with ~clj -M build.clj~.
+2. You need a server that's going to A. host your ClojureScript REPL, B. host the WebSocket connection with your browser. You can run both in the same Clojure process with the code below. I usually put the code below in a ~tamperweasel.clj~, and run with ~clj -M tamperweasel.clj~.
  
 #+begin_src clojure
   (ns user
@@ -25,7 +25,7 @@ To use:
 
 3. In your userscript manager, add ~https://raw.githubusercontent.com/neilyio/tamperweasel/master/dist/tamperweasel.js~ as a script. Enable it, and browse to a web page. If you're loading your own HTML file, you can link this in a ~<script src="..."/>~ block.
 
-4. Once both your Clojure server (~clj -M build.clj~) and your userscript are running, connect to the Clojure server's pREPL at port ~6776~ in Emacs or your favorite editor. Note that the WebSocket connection between Clojure and browser won't be initiated until after you've connected successfully to the pREPL.
+4. Once both your Clojure server (~clj -M tamperweasel.clj~) and your userscript are running, connect to the Clojure server's pREPL at port ~6776~ in Emacs or your favorite editor. Note that the WebSocket connection between Clojure and browser won't be initiated until after you've connected successfully to the pREPL.
 
 Now evaluate some ClojureScript, and take over the web! More info coming soon about how to set up other REPLs (nREPL, socket REPL), as well as how to add dependencies.
 
