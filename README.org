@@ -1,9 +1,13 @@
-To install dependencies:
-#+begin_src shell
-  yarn
-#+end_src
+* Compiling
+Make sure you have ~shadow-cljs~ installed globally.
 
-To compile ~public/js/tamperweasel.js~:
+The namespace with the WebSocket logic is ~tamperweasel.core~.
+
+The build scripts is in ~tamperweasel.build~.
+
+The final output is ~dist/tamperweasel.js~.
+
+To compile ~dist/tamperweasel.js~:
 #+begin_src emacs-lisp
-  npx shadow-cljs run scripts.build/build
+  shadow-cljs run scripts.build/build
 #+end_src
