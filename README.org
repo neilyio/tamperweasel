@@ -11,8 +11,8 @@ To use:
 2. You need a server that's going to A. host your ClojureScript REPL, B. host the WebSocket connection with your browser. You can run both in the same Clojure process with the code below. I usually put the code below in a ~tamperweasel.clj~, and run with ~clj -M tamperweasel.clj~.
  
 #+begin_src clojure
-  (ns user
-    (:require [clojure.core.server] [weasel.repl.websocket]))
+  (require '[clojure.core.server])
+  (require '[weasel.repl.websocket])
 
   (clojure.core.server/start-server
    {:accept        'cljs.core.server/io-prepl
