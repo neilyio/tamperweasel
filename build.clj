@@ -38,16 +38,13 @@
    :output-dir       "out/js"
    :asset-path       "/js"
    :modules          {:tamperweasel {:entries '[tamperweasel.core]}}
-   :compiler-options {:optimizations :advanced
-                      :source-map    true}
+   :compiler-options {:optimizations :simple
+                      :source-map    false}
    :build-hooks '[(user/concat-header)]})
 
 ;; Have to start and stop the shadow-cljs server manually.
 (shadow.cljs.devtools.server/start!)
 
-(shadow.cljs.devtools.api/compile* options {})
+(shadow.cljs.devtools.api/release* options {})
 
 (shadow.cljs.devtools.server/stop!)
-
-
-
