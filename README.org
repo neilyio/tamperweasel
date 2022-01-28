@@ -12,8 +12,7 @@ To use:
  
 #+begin_src clojure
   (ns user
-    (:require [clojure.core.server]
-	      [weasel.repl.websocket]))
+    (:require [clojure.core.server] [weasel.repl.websocket]))
 
   (clojure.core.server/start-server
    {:accept        'cljs.core.server/io-prepl
