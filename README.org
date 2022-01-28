@@ -1,5 +1,39 @@
-* Compiling
-Make sure you have ~shadow-cljs~ installed globally.
+
+* Tamperweasel
+Load a ClojureScript REPL on any site by simply enabling a userscript, or using a ~<script src="..."/>~ block in your HTML.
+
+The WebSocket connection is created by the [[https://github.com/nrepl/weasel][Weasel]] library, and I personally use [[https://www.tampermonkey.net/][Tampermonkey]] to manage my userscripts, hence the name of this repo.
+
+To use:
+
+1. Install Weasel and ClojureScript to your Clojure environment. This might be the ~deps.edn~ in your project folder, or ~.clojure/deps.edn~ for a "global" install.
+   
+2. You need a server that's going to A. host your ClojureScript REPL, B. host the WebSocket connection with your browser. You can run both in the same Clojure process with the code below. I usually put the code below in a ~build.clj~, and run with ~clj -M build.clj~.
+ 
+#+begin_src clojure
+  (ns user
+    (:require [clojure.core.server]
+	      [weasel.repl.websocket]))
+
+  (clojure.core.server/start-server
+   {:accept        'cljs.core.server/io-prepl
+    :address       "127.0.0.1"
+    :port          6776
+    :name          "build"
+    :args          [:repl-env (weasel.repl.websocket/repl-env :ip "0.0.0.0" :port 9001)]
+    :server-daemon false})
+#+end_src
+
+3. In your userscript manager, add ~https://raw.githubusercontent.com/neilyio/tamperweasel/master/dist/tamperweasel.js~ as a script. Enable it, and browse to a web page. If you're loading your own HTML file, you can link this in a ~<script src="..."/>~ block.
+
+4. Once both your Clojure server (~clj -M build.clj~) and your userscript are running, connect to the Clojure server's pREPL at port ~6776~ in Emacs or your favorite editor. Note that the WebSocket connection between Clojure and browser won't be initiated until after you've connected successfully to the pREPL.
+
+Now evaluate some ClojureScript, and take over the web! More info coming soon about how to set up other REPLs (nREPL, socket REPL), as well as how to add dependencies.
+
+** Compiling
+The latest version of ~tamperweasel.js~ is committed to the repo in ~dist/tamperweasel.js~. Unless you're making changes to the source code, just load that one as your userscript.
+
+To compile, make sure you have ~shadow-cljs~ installed globally.
 
 The namespace with the WebSocket logic is ~tamperweasel.core~.
 
