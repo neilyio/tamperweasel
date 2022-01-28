@@ -6,7 +6,7 @@ The WebSocket connection is created by the [[https://github.com/nrepl/weasel][We
 
 To use:
 
-1. Install Weasel and ClojureScript to your Clojure environment. This might be the ~deps.edn~ in your project folder, or ~.clojure/deps.edn~ for a "global" install.
+1. Install Weasel and ClojureScript to your Clojure environment. This might be the ~deps.edn~ in your project folder, or ~~/.clojure/deps.edn~ for a "global" install.
    
 2. You need a server that's going to A. host your ClojureScript REPL, B. host the WebSocket connection with your browser. You can run both in the same Clojure process with the code below. I usually put the code below in a ~tamperweasel.clj~, and run with ~clj -M tamperweasel.clj~.
  
