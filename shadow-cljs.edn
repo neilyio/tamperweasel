@@ -1,0 +1,12 @@
+{:source-paths
+ ["src"]
+ :dependencies
+ [[weasel "0.7.0"]]
+ :builds
+ {:release
+  {:target           :browser
+   :output-dir       "compiled/js"
+   :asset-path       "/js"
+   :modules          {:tamperweasel {:entries [tamperweasel.core]}}
+   :compiler-options {:optimizations :simple
+                      :source-map    false}}}}

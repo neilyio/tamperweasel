@@ -1,0 +1,9 @@
+To install dependencies:
+#+begin_src shell
+  yarn
+#+end_src
+
+To compile ~public/js/tamperweasel.js~:
+#+begin_src emacs-lisp
+  npx shadow-cljs run scripts.build/build
+#+end_src
